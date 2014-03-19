@@ -71,7 +71,6 @@ public class LoginFormServlet extends HttpServlet{
 		writer.println("<input type='submit' value='로그인' class='button' />");
 		writer.println("</form>");
 		writer.println("</div></body>");
-		writer.println("");
 		writer.println("</html>");
 
 		
