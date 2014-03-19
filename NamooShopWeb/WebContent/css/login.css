@@ -1,4 +1,8 @@
 @CHARSET "UTF-8";
+#login {
+	width: 500px;
+	margin: 30px auto;
+}
 table {
 	font-family : NanumGothic;
 	font-weight : bold;
@@ -7,6 +11,15 @@ table {
 	width: 500px;
 	height: 80px;
 
+}
+td {
+	border-top: 1px solid #222;
+	border-left: 1px solid #222;
+
+}
+h5 {
+	font-family : NanumGothic;
+	color: red;
 }
 .alignCenter {
 	text-align: center;
@@ -21,8 +34,4 @@ table {
 }
 .inputText {
 	width: 300px;
-}
-#loginDiv {
-	width: 500px;
-	margin: 30px auto;
 }

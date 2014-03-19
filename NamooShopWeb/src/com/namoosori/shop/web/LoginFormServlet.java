@@ -27,11 +27,10 @@ public class LoginFormServlet extends HttpServlet{
 		// 
 		HttpSession session = req.getSession();
 		//로그인된 경우 로그인사용자 페이지로 바로 이동
-		if(session.getAttribute("loginId") != null) {
+		if(session.getAttribute("isLogin") != null && (boolean) session.getAttribute("isLogin") == true) {
 			resp.sendRedirect("main.xhtml");
 			return;
 		}
-
 		
 		resp.setContentType("text/html; charset=utf-8"); 		
 		PrintWriter writer = resp.getWriter();
@@ -39,9 +38,9 @@ public class LoginFormServlet extends HttpServlet{
 		writer.println("<html>");
 		writer.println("<head>");
 		writer.println("<title>로그인</title>");
-		writer.println("<link href='./css/order.css' rel='stylesheet' type='text/css'/>");
+		writer.println("<link href='./css/login.css' rel='stylesheet' type='text/css'/>");
 		writer.println("</head>");
-		writer.println("<body><div id='loginDiv'>");
+		writer.println("<body><div id='login'>");
 		writer.println("<form action=\"login.do\" method=\"post\">");
 		
 		String loginId = "";
@@ -67,7 +66,7 @@ public class LoginFormServlet extends HttpServlet{
 		writer.println("<td>패스워드</td>");
 		writer.println("<td><input class='inputText' type='password' name='password' value='"+password+"'/></td>");
 		writer.println("</tr>");
-		writer.println("</table>");
+		writer.println("</table><br />");
 		writer.println("<input type='submit' value='로그인' class='button' />");
 		writer.println("</form>");
 		writer.println("</div></body>");

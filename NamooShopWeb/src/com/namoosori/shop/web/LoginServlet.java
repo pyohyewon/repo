@@ -44,10 +44,10 @@ public class LoginServlet extends HttpServlet{
 			
 		} else {
 			// 로그인 실패
-			resp.sendRedirect("login.xhtml");
 			session.setAttribute("isLogin", false);
 			session.setAttribute("loginId", userId);
 			session.setAttribute("password", password);	
+			resp.sendRedirect("login.xhtml");
 		}
 	}
 	

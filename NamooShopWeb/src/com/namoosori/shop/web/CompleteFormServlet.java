@@ -26,33 +26,32 @@ public class CompleteFormServlet extends HttpServlet{
 		// 		
 
 		HttpSession session = req.getSession();
-		if(session.getAttribute("loginId") == null) {
-			resp.sendRedirect("login.xhtml");
-			return;
-		}else if(session.getAttribute("loginId") !=null && req.getParameterValues("products") != null) {
-			resp.setContentType("text/html; charset=utf-8"); 
-			req.setCharacterEncoding("utf-8");
-			PrintWriter writer = resp.getWriter();
-			
-			writer.println("<html>");
-			writer.println("<head>");
-			writer.println("<title>주문 완료</title>");
-			writer.println("<link href='./css/complete.css' rel='stylesheet' type='text/css'/>");
-			writer.println("</head>");
-			writer.println("<body>");
-			writer.println("<div id='complete'>");
-			writer.println("<form action=\"main.xhtml\" method=\"post\">");
-			writer.println("<h3>상품 주문이 완료되었습니다.</h3>");
-			writer.println("<input id='submit' type='submit' value='확인'/>");
-			writer.println("</div></body>");
-			writer.println("</html>");
-		} else {
+		if(session.getAttribute("isLogin")!=null) {
+			if((Boolean) session.getAttribute("isLogin") == false ) {
+				resp.sendRedirect("login.xhtml");
+				return;
+			}else if((boolean) session.getAttribute("isLogin") == true 
+					&& req.getParameterValues("products") != null) {
+				resp.setContentType("text/html; charset=utf-8"); 
+				req.setCharacterEncoding("utf-8");
+				PrintWriter writer = resp.getWriter();
+				
+				writer.println("<html>");
+				writer.println("<head>");
+				writer.println("<title>주문 완료</title>");
+				writer.println("<link href='./css/complete.css' rel='stylesheet' type='text/css'/>");
+				writer.println("</head>");
+				writer.println("<body>");
+				writer.println("<div id='complete'>");
+				writer.println("<form action=\"main.xhtml\" method=\"post\">");
+				writer.println("<h3>상품 주문이 완료되었습니다.</h3>");
+				writer.println("<input id='submit' type='submit' value='확인'/>");
+				writer.println("</div></body>");
+				writer.println("</html>");
+			}
+		}else {
 			resp.sendRedirect("main.xhtml");
 			return;
-		}
-
-		
-	}
-
-	
+		}		
+	}	
 }

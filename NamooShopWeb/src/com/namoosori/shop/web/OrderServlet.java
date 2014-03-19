@@ -26,7 +26,7 @@ public class OrderServlet extends HttpServlet{
 			throws ServletException, IOException {
 		// 
 		HttpSession session = req.getSession();
-		if(session.getAttribute("loginId") == null) {
+		if(session.getAttribute("isLogin")==null) {
 			resp.sendRedirect("login.xhtml");
 			return;
 		}

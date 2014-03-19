@@ -31,10 +31,15 @@ public class OrderFormServlet extends HttpServlet{
 			throws ServletException, IOException {
 		//
 		HttpSession session = req.getSession();
-		if(session.getAttribute("loginId") == null) {
-			resp.sendRedirect("login.xhtml");
-			return;
+		
+		if (session.getAttribute("isLogin") != null) {
+			
+			if ((Boolean) session.getAttribute("isLogin") == false) {
+				resp.sendRedirect("login.xhtml");
+				return;
+			}
 		}
+	
 		
 		NamooShopServiceFactory factory = NamooShopServiceFactory.getInstance();
 		ProductServiceLogic productService = (ProductServiceLogic) factory.getProductService();
