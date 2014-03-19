@@ -72,6 +72,7 @@ public class LoginFormServlet extends HttpServlet{
 		writer.println("</form>");
 		writer.println("</div></body>");
 		writer.println("</html>");
+		writer.println(" ");
 
 		
 	}
