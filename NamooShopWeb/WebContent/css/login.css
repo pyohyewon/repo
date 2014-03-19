@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+table {
+	font-family : NanumGothic;
+	font-weight : bold;
+	border-collapse : collapse;
+	border: 1px solid black;
+	width: 500px;
+	height: 80px;
+
+}
+.alignCenter {
+	text-align: center;
+}
+.button {
+	font-family : NanumGothic;
+	font-size:medium;
+	font-weight:bold;
+	width: 120px;
+	height: 40px;
+	float: right;
+}
+.inputText {
+	width: 300px;
+}
+#loginDiv {
+	width: 500px;
+	margin: 30px auto;
+}

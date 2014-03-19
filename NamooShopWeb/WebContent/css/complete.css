@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+
+#complete {
+	font-family : NanumGothic;
+	margin-top : 100px;
+	text-align: center;
+}
+#submit {
+	font-family : NanumGothic;
+	font-size:medium;
+	font-weight:bold;
+	width: 120px;
+	height: 40px;
+}
