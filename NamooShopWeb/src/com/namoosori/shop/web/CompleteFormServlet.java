@@ -1,5 +1,5 @@
 package com.namoosori.shop.web;
- 
+  
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -24,6 +24,7 @@ public class CompleteFormServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// 		
+		System.out.println("d");
 		HttpSession session = req.getSession();
 		if(session.getAttribute("loginId") == null) {
 			resp.sendRedirect("login.xhtml");
