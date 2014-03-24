@@ -1,4 +1,4 @@
-package com.namoosori.shop.web;
+package com.namoosori.board.web.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.namoosori.namooshop.domain.Product;
-import com.namoosori.namooshop.service.facade.ProductService;
-import com.namoosori.namooshop.service.factory.NamooShopServiceFactory;
+import com.namoosori.board.domain.User;
+import com.namoosori.board.service.facade.UserService;
+import com.namoosori.board.service.factory.NamooBoardServiceFactory;
 
-@WebServlet("/main.xhtml")
-public class MainServlet extends HttpServlet{
-	private static final long serialVersionUID = -5441914164986289841L;
+@WebServlet("/user/list.do")
+public class UserListController extends HttpServlet{
+
+	private static final long serialVersionUID = 1503129561084751689L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -32,20 +33,19 @@ public class MainServlet extends HttpServlet{
 		// 
 		HttpSession session = req.getSession();
 		if(session.getAttribute("loginName") == null){
-			resp.sendRedirect("login.jsp");
+			resp.sendRedirect("loginForm.do");
 			return;
 		}
+		UserService userService = NamooBoardServiceFactory.getInstance().getUserService();
 		
-		NamooShopServiceFactory factory = NamooShopServiceFactory.getInstance();
-		ProductService productService = factory.getProductService();
+		List<User> users = userService.getAllUsers();
+		req.setAttribute("users", users);
 		
-		List<Product> products = productService.getAllProducts();
-		
-		req.setAttribute("products", products);
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/main.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userlist.jsp");
 		dispatcher.forward(req, resp);
 		
-			
 	}
+	
+	
+
 }
